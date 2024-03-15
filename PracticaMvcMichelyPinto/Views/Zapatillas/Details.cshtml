@@ -1,50 +1,25 @@
 ﻿@model PracticaMvcMichelyPinto.Models.Zapatilla
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalle";
 }
 
-<h1>Details</h1>
+
 
 <div>
     <h4>Zapatilla</h4>
     <hr />
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 35rem;">
         <div class="card-body">
-            <h5 class="card-title">Nombre</h5>
+            <h5 class="card-title">Nombre @Model.Nombre</h5>
    
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p class="card-text">@Model.Descripcion</p>
+            <p class="card-text">Precio: @Model.Precio</p>
+
+            
         </div>
     </div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdProducto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdProducto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-    </dl>
 </div>
 <div>
     <a asp-action="Index">Back to List</a>
@@ -56,6 +31,7 @@
             $(document).ready(function(){
                 $("#container").load("/Zapatillas/_PartialPaginacion?posicion="
                     + posicion + "&idproducto=" + @Model.IdProducto);
+                console.log(posicion);
             })
         }
         loadImagen(1);

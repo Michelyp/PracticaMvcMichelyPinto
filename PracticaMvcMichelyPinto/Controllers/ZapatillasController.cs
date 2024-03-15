@@ -22,15 +22,14 @@ namespace PracticaMvcMichelyPinto.Controllers
             Zapatilla zap = await this.repo.FindZapatillaAsync(idproducto);
             return View(zap);
         }
-        public async Task<IActionResult> ZapatillasImagenes(int idproducto, int? posicion)
+        public async Task<IActionResult> _PartialPaginacion(int? posicion,int idproducto)
         {
             if (posicion == null)
             {
                 posicion = 1;
-                return View();
             }
-            else
-            {
+           
+           
                 ModelPaginacion model = await
                     this.repo.GetImagen(idproducto, posicion.Value);
                 ViewData["REGISTROS"] = model.NumeroRegistros;
@@ -52,18 +51,24 @@ namespace PracticaMvcMichelyPinto.Controllers
                 ViewData["SIGUIENTE"] = siguiente;
                 ViewData["ANTERIOR"] = anterior;
                 ViewData["POSICION"] = posicion;
-                return View(model.Imagenes);
-            }
+                return PartialView("_PartialPaginacion", model.Imagenes);
+           
         }
-        //public async Task<IActionResult> Insertar(List<string> imagen)
-        //{
-            
-            
-        //        this.repo.InsertarImagen(imagen);
-            
+        public async Task<IActionResult> Insertar()
+        {
 
-        //    return View();
-        //}
+            var zapatillas = await this.repo.GetZapatillasAsync();
+            ViewData["ZAPATILLAS"] = zapatillas;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Insertar(List<string> imagen)
+        {
+
+            //this.repo.InsertarImagen(imagen);
+            return View();
+        }
+
     }
 }
 

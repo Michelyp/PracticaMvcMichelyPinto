@@ -1,24 +1,30 @@
-﻿<p>
+﻿@model Zapatilla
+@{
+    List<Zapatilla> zapatillas = ViewData["ZAPATILLAS"] as List<Zapatilla>;
+}
+<p>
     <a asp-controller="Zapatillas" asp-action="Zapatillas">
         Volver a Index
     </a>
 </p>
 <h1>Nuevas imagenes zapatillas</h1>
 <form method="post">
-    <input type="hidden" name="idhospital" value="@Model.IdHospital" />
-    <label>Nombre</label>
-    <input type="text" name="nombre" value="@Model.Nombre"
-           class="form-control" />
-    <label>Dirección</label>
-    <input type="text" name="direccion" value="@Model.Direccion"
-           class="form-control" />
-    <label>Teléfono</label>
-    <input type="text" name="telefono" value="@Model.Telefono"
-           class="form-control" />
-    <label>Camas</label>
-    <input type="text" name="camas" value="@Model.Camas"
-           class="form-control" />
+    <h2>Seleccione una zapatilla:</h2>
+    <select class="form-select" aria-label="Default select example">
+        @foreach (Zapatilla zap in zapatillas)
+        {
+            <option value="@zap.IdProducto">@zap.Nombre</option>
+        }
+        
+    </select>
+    <input type="text" name="imagen" />
+    <label>Imagen</label>
+  
     <button class="btn btn-info">
-        Update
+        Insertar imagen
     </button>
 </form>
+
+@* @section Scripts{
+    No me va a dar tiempo
+} *@

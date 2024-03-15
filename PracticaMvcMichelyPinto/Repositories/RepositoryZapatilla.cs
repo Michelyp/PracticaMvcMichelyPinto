@@ -49,9 +49,9 @@ namespace PracticaMvcMichelyPinto.Repositories
         {
             return await this.context.ImagenZapatillas.Where(z => z.IdProducto == idproducto).CountAsync();
         }
-        public async Task<ModelPaginacion> GetImagen(int idproducto, int posicion)
+        public async Task<ModelPaginacion> GetImagen(int posicion,int idproducto )
         {
-            string sql = "SP_ZAPAIMAGENES @IDPRODUCTO @POSICION";
+            string sql = "SP_ZAPAIMAGENES @IDPRODUCTO @POSICION @REGISTROS out";
             SqlParameter pamId =
                 new SqlParameter("@IDPRODUCTO", idproducto);
             SqlParameter pamPosicion =
