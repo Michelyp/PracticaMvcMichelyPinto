@@ -3,15 +3,22 @@
 @{
     ViewData["Title"] = "Details";
 }
-@{
-    Zapatilla zapatilla = ViewData["ZAPATILLASELECCIONADA"] as Zapatilla;
-}
 
 <h1>Details</h1>
 
 <div>
     <h4>Zapatilla</h4>
     <hr />
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Nombre</h5>
+   
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdProducto)
@@ -48,7 +55,7 @@
         function loadImagen(posicion) {
             $(document).ready(function(){
                 $("#container").load("/Zapatillas/_PartialPaginacion?posicion="
-                    + posicion + "&idproducto=" + @zapatilla.IdProducto);
+                    + posicion + "&idproducto=" + @Model.IdProducto);
             })
         }
         loadImagen(1);

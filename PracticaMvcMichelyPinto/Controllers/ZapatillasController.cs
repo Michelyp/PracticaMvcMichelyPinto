@@ -33,9 +33,6 @@ namespace PracticaMvcMichelyPinto.Controllers
             {
                 ModelPaginacion model = await
                     this.repo.GetImagen(idproducto, posicion.Value);
-                Zapatilla zap = await this.repo.FindZapatillaAsync(idproducto);
-                ViewData["ZAPATILLASELECCIONADA"] = zap;
-
                 ViewData["REGISTROS"] = model.NumeroRegistros;
                 ViewData["IDPRODUCTO"] = idproducto;
                 ViewData["POSICION"] = posicion;
