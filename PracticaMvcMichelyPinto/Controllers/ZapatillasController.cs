@@ -31,7 +31,7 @@ namespace PracticaMvcMichelyPinto.Controllers
            
            
                 ModelPaginacion model = await
-                    this.repo.GetImagen(idproducto, posicion.Value);
+                    this.repo.GetImagen(posicion.Value,idproducto);
                 ViewData["REGISTROS"] = model.NumeroRegistros;
                 ViewData["IDPRODUCTO"] = idproducto;
                 ViewData["POSICION"] = posicion;
