@@ -1,0 +1,54 @@
+﻿@model PracticaMvcMichelyPinto.Models.ImagenZapatilla
+
+@{
+    ViewData["Title"] = "ZapatillasImagenes";
+}
+
+@{
+    Zapatilla zapatilla =
+            ViewData["ZAPATILLASELECCIONADA"] as Zapatilla;
+}
+<h1>ZapatillasImagenes</h1>
+
+<div>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">
+            <a asp-controller="ZapatillasImagenes"
+               asp-action="ZapatillasImagenes"
+               asp-route-posicion="1"
+               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                Primero
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="ZapatillasImagenes"
+               asp-action="ZapatillasImagenes"
+               asp-route-posicion="@ViewData["ANTERIOR"]"
+               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                Anterior
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="ZapatillasImagenes"
+               asp-action="ZapatillasImagenes"
+               asp-route-posicion="@ViewData["SIGUIENTE"]"
+               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                Siguiente
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a asp-controller="ZapatillasImagenes"
+               asp-action="ZapatillasImagenes"
+               asp-route-posicion="@ViewData["ULTIMO"]"
+               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+                Último
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="container" class="card" style="width: 18rem;">
+    @foreach (var item in Model.Imagen)
+    {
+        <img class="card-img-top" src="@item" alt="Card image cap">
+    }
+</div>
