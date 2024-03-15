@@ -12,11 +12,20 @@
 //	where IDPRODUCTO = @IDPRODUCTO) as query
 //	where query.posicion >= @POSICION and query.posicion < (@POSICION + 1)
 //go
+
+//create procedure SP_INSERT_IMAGEN
+//(@imagen nvarchar(150))
+//as
+//    declare @maxinscripcion int
+//    select @maxinscripcion = max(IDIMAGEN) + 1 from IMAGENESZAPASPRACTICA
+//    insert into IMAGENESZAPASPRACTICA values (@maxinscripcion, @imagen,1)
+//go
 #endregion
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using PracticaMvcMichelyPinto.Data;
 using PracticaMvcMichelyPinto.Models;
+using System.Data;
 
 namespace PracticaMvcMichelyPinto.Repositories
 {
@@ -59,6 +68,14 @@ namespace PracticaMvcMichelyPinto.Repositories
                 Imagenes = imagenes
 
             };
+        }
+        public void InsertarImagen
+           ( string imagen)
+        {
+            string sql = "SP_ZAPAIMAGENES @imagen";
+            SqlParameter pamimagen =
+                 new SqlParameter("@IDPRODUCTO", imagen);
+            this.context.Database.ExecuteSqlRaw(sql, pamimagen);
         }
 
 

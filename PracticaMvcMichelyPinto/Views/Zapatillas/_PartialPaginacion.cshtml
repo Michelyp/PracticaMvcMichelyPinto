@@ -1,10 +1,6 @@
 ﻿@model PracticaMvcMichelyPinto.Models.ImagenZapatilla
 
 @{
-    ViewData["Title"] = "ZapatillasImagenes";
-}
-
-@{
     Zapatilla zapatilla =
             ViewData["ZAPATILLASELECCIONADA"] as Zapatilla;
 }
@@ -13,42 +9,30 @@
 <div>
     <ul class="list-group list-group-horizontal">
         <li class="list-group-item">
-            <a asp-controller="ZapatillasImagenes"
-               asp-action="ZapatillasImagenes"
-               asp-route-posicion="1"
-               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+            <button class="btn btn-dark" onclick="loadImagen(1)" id="primero">
                 Primero
-            </a>
+            </button>
         </li>
         <li class="list-group-item">
-            <a asp-controller="ZapatillasImagenes"
-               asp-action="ZapatillasImagenes"
-               asp-route-posicion="@ViewData["ANTERIOR"]"
-               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+            <button class="btn btn-dark" onclick="loadImagen(@ViewData["ANTERIOR"])" id="anterior">
                 Anterior
-            </a>
+            </button>
         </li>
         <li class="list-group-item">
-            <a asp-controller="ZapatillasImagenes"
-               asp-action="ZapatillasImagenes"
-               asp-route-posicion="@ViewData["SIGUIENTE"]"
-               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
+            <button class="btn btn-dark" onclick="loadImagen(@ViewData["SIGUIENTE"])" id="siguiente">
                 Siguiente
-            </a>
+            </button>
         </li>
         <li class="list-group-item">
-            <a asp-controller="ZapatillasImagenes"
-               asp-action="ZapatillasImagenes"
-               asp-route-posicion="@ViewData["ULTIMO"]"
-               asp-route-idproducto="@ViewData["IDPRODUCTO"]">
-                Último
-            </a>
+            <button class="btn btn-dark" onclick="loadImagen(@ViewData["ULTIMO"])" id="ultimo">
+                Ultimo
+            </button>
         </li>
     </ul>
+
 </div>
 <div id="container" class="card" style="width: 18rem;">
-    @foreach (var item in Model.Imagen)
-    {
-        <img class="card-img-top" src="@item" alt="Card image cap">
-    }
+      
+        <img class="card-img-top" src="@Model.Imagen" alt="Card image cap">
+    
 </div>

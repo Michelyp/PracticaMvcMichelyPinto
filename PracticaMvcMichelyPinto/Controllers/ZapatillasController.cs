@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PracticaMvcMichelyPinto.Models;
 using PracticaMvcMichelyPinto.Repositories;
+using System.Drawing;
 
 namespace PracticaMvcMichelyPinto.Controllers
 {
@@ -56,8 +57,16 @@ namespace PracticaMvcMichelyPinto.Controllers
                 ViewData["POSICION"] = posicion;
                 return View(model.Imagenes);
             }
-
         }
+        //public async Task<IActionResult> Insertar(List<string> imagen)
+        //{
+            
+            
+        //        this.repo.InsertarImagen(imagen);
+            
+
+        //    return View();
+        //}
     }
 }
 
